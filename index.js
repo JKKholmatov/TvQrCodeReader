@@ -7,7 +7,8 @@ const jsQR = require("jsqr");
 const IMAGE_URL =
   "https://streaming.beelinetv.uz/live_preview/beelinetvuz/11.jpeg";
 const TELEGRAM_BOT_TOKEN = "7297298174:AAENdf1k5KGQCL_24786lBp5LRQddK6Gw04";
-const TELEGRAM_CHAT_ID = "1996750895"; //Farangiz: 1996750895, JK: 292438799
+const TELEGRAM_CHAT_ID_FARANGIZ = "1996750895"; //Farangiz: 1996750895, JK: 292438799
+const TELEGRAM_CHAT_ID_OYIM = "8084488910"; //Oyim: 8084488910
 
 // === INIT TELEGRAM BOT ===
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
@@ -45,7 +46,11 @@ async function fetchAndScanImage() {
 
         try {
           await bot.sendMessage(
-            TELEGRAM_CHAT_ID,
+            TELEGRAM_CHAT_ID_FARANGIZ,
+            `🎯 QR Code Detected:\n${qrText}`
+          );
+          await bot.sendMessage(
+            TELEGRAM_CHAT_ID_OYIM,
             `🎯 QR Code Detected:\n${qrText}`
           );
           console.log("Sent message to Telegram.");
